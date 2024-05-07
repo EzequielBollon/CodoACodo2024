@@ -22,25 +22,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 <body>
-
-    <header>
-        <div class="logo">
-            <a href=""><img src="../assets/images/favicon.ico" alt=""></a>
-            <h1>HardSoft</h1>
-        </div>
-        <form class="barra-busqueda" action="#">
-            <span class="material-symbols-outlined">search</span>
-            <input type="text" placeholder="Buscar...">
-        </form>
-        <nav>
-            <ul>
-                <li><a href="../index.html">Inicio</a></li>
-                <li><a href="#">Acerca de</a></li>
-                <li><a href="#">Servicios</a></li>
-                <li><a href="./contactos.html">Contacto</a></li>
-                <li><a href="./login.html">Acceder</a></li>
-            </ul>
-        </nav>
+    <header class="headerPages">
+        <!--El header de todas las paginas se paso a header.js para ahorrar codigo y tiempo, ahora solo hay que modificar el js para que se modifiquen todos los header, en vez de modificar 1 x 1-->
     </header>
 
     <main>
@@ -74,18 +57,13 @@
         </section>
     </main>
 
-    <footer>
-        <div>
-            <p>&copy; 2024 HardSoft. Todos los derechos reservados.</p>
-        </div>
-        <ul class="social-icons">
-            <li><a href="#"><i class="fab fa-facebook"></i></a></li>
-            <li><a href="#"><i class="fa-solid fa-x"></i></a></li>
-            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-            <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
-        </ul>  
+    <footer class="footer-pages">
+        <!--El footer de todas las paginas se paso a header.js para ahorrar codigo y tiempo, ahora solo hay que modificar el js para que se modifiquen todos los footer, en vez de modificar 1 x 1--> 
     </footer>
+
+    <script src="../assets/Js/header.js"></script>
     <script src="../js/contactos.js"></script>
+    <script src="../assets/Js/footer.js"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script> AOS.init();</script>
     <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>  
