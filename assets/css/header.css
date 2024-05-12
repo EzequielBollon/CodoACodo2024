@@ -98,9 +98,15 @@ header nav ul li a {
   }
   
   .menuHamburguesa .fa-bars, .menuHamburguesa .fa-times {
-    font-size: 48px;
-    pointer-events: none;
+    display: none; /* Asegura que ambos íconos estén inicialmente escondidos */
+    font-size: 24px; /* Ajusta el tamaño del ícono */
+    color: white;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
   }
+  
   
   .menuHamburguesa input[type="checkbox"] {
     opacity: 0;
@@ -115,15 +121,24 @@ header nav ul li a {
     
   }
   
-  .menuHamburguesa input:checked ~ .fa-bars {
-    display: none;
+  .menuHamburguesa input[type="checkbox"]:not(:checked) ~ .fa-bars {
+    display: block;
   }
   
-  .menuHamburguesa input:not(:checked) ~ .fa-times {
+  .menuHamburguesa input[type="checkbox"]:checked ~ .fa-times {
+    display: block;
+  }
+  
+  .menuHamburguesa input[type="checkbox"]:not(:checked) ~ .fa-times {
     display: none;
     transition: 1s;
   }
-
+  
+  /* acccesibilidad y estilos de enlace */
+.menuHamburguesa a:focus {
+  background-color: #345678; /* Un color de fondo para cuando el enlace está en foco */
+  outline: none; /* Opcional, pero mantén una indicación visual de foco si eliminas el outline */
+}
 
 /* Media query para hacer el header responsive */
 @media screen and (max-width: 768px) {
@@ -153,6 +168,17 @@ header nav ul li a {
     }
 }
 
-@media screen and (max-width: 480px){ /*FALTA AGREGAR RESPONSIVE PARA CELULARES*/
+@media screen and (max-width: 480px) {
+  .menuHamburguesa {
+    min-height: 40px; /* Ajusta la altura del menú */
+  }
 
+  .menuHamburguesa a {
+    padding: 8px 16px; /* Reduce el padding */
+    font-size: 0.8rem; /* Reduce el tamaño de la fuente */
+  }
+
+  .menuHamburguesa .fa-bars, .menuHamburguesa .fa-times {
+    top: 5px; /* Ajusta la posición vertical de los íconos */
+  }
 }
