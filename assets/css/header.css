@@ -168,17 +168,29 @@ header nav ul li a {
     }
 }
 
-@media screen and (max-width: 480px) {
-  .menuHamburguesa {
-    min-height: 40px; /* Ajusta la altura del menú */
+@media (max-width: 480px) {
+  .headerPages {
+      padding-top: 10px; /* Añadir padding superior para bajar el contenido del header */
+      padding-bottom: 10px; /* Añadir padding inferior para más espacio */
+      background-color: #333; /* Puedes ajustar el color de fondo si es necesario */
+      position: relative; /* Importante para posicionamiento de otros elementos basados en él */
+      z-index: 10; /* Asegúrate de que el header se sitúe encima de otros contenidos */
   }
 
-  .menuHamburguesa a {
-    padding: 8px 16px; /* Reduce el padding */
-    font-size: 0.8rem; /* Reduce el tamaño de la fuente */
+  .headerPages:after {
+      content: "";
+      display: block;
+      height: 4px;
+      background-color: #e67e22; /* El color naranja de la línea */
+      width: 100%;
+      position: absolute; /* Posicionar absolutamente respecto al header */
+      bottom: -4px; /* Posiciona la línea justo debajo del header */
+      left: 0;
   }
 
-  .menuHamburguesa .fa-bars, .menuHamburguesa .fa-times {
-    top: 5px; /* Ajusta la posición vertical de los íconos */
+  /* Asegúrate de que el contenido principal comience después del header */
+  main {
+      margin-top: 60px; /* Ajusta según la altura total del header con la línea */
   }
 }
+

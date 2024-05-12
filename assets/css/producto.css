@@ -1,0 +1,105 @@
+.producto {
+    display: flex;
+    background: #ffffff;  /* Fondo blanco para mayor legibilidad */
+    margin: 20px;  /* Aumento del margen para más espacio */
+    border-radius: 10px;  /* Esquinas más redondeadas */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);  /* Sombra más suave */
+    overflow: hidden;  /* Asegura que todo el contenido se mantenga dentro de los bordes */
+}
+
+.producto img {
+    width: 100%;  /* Ajuste para que la imagen cubra el espacio adecuado */
+    transition: transform 0.3s ease;  /* Transición suave para el efecto de hover */
+}
+
+.producto:hover img {
+    transform: scale(1.1);  /* Aumenta ligeramente la imagen al hacer hover */
+}
+
+.section1 {
+    background: #f5f5f5;  /* Un fondo más claro para mejor contraste */
+    text-align: center;  /* Centrar el título y contenido */
+    padding: 50px 0;  /* Añadir más padding para más espacio */
+    margin-top: 60px;  /* Espacio desde el top para no superponerse con el header */
+}
+
+.section1 h2 {
+    color: #333;  /* Color oscuro para mejor lectura */
+    font-size: 2.5rem;  /* Tamaño más grande para el título */
+    margin-bottom: 20px;  /* Espacio debajo del título */
+}
+.contenedor {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));  /* Ajusta esto para manejar mejor múltiples productos */
+    gap: 20px;  /* Espacio entre productos */
+    padding: 20px;  /* Padding dentro del contenedor */
+}
+
+.info-producto {
+    padding: 15px;  /* Más padding para mejor estructura */
+    display: flex;
+    flex-direction: column;  /* Organiza el contenido verticalmente */
+    justify-content: space-between;  /* Espacia los elementos uniformemente */
+}
+
+.info-producto h3 {
+    color: #333;
+    font-size: 1.2rem;  /* Fuente más grande para el título */
+}
+
+.info-producto p {
+    font-size: 1rem;  /* Tamaño uniforme para la descripción */
+    color: #555;  /* Color más suave para la descripción */
+}
+
+.info-producto span {
+    font-weight: bold;
+    color: #000;
+    font-size: 1.1rem;  /* Tamaño más grande para el precio */
+}
+
+.info-producto button {
+    padding: 10px 20px;  /* Botón más grande para una mejor interacción */
+    background-color: #0056b3;
+    color: white;
+    border: none;
+    border-radius: 5px;  /* Bordes redondeados */
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.modal {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    width: 80%;
+    max-width: 500px;
+}
+
+@media screen and (max-width: 768px) {
+    .contenedor {
+        grid-template-columns: 1fr;  /* Una sola columna en pantallas pequeñas */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .producto {
+        flex-direction: column;  /* Cambia la dirección del flex a columna en móviles */
+    }
+
+    .info-producto {
+        order: 2;  /* Asegura que el texto siempre esté debajo de la imagen en móviles */
+    }
+}
