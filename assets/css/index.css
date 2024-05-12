@@ -109,11 +109,43 @@ main video {
     background-color: #3d351f;
 }
 
-@media screen and (max-width: 768px){
-    html{
+@media screen and (max-width: 480px) {
+    html {
+        font-size: 10px;  /* Reducir el tamaño de la fuente para móviles */
+    }
+    .section1 {
+        margin: 100px 20px;  /* Reducir el margen superior y ajustar los lados para móviles */
+        width: auto;  /* Permite que la sección se ajuste automáticamente al ancho de la pantalla */
+    }
+    .contenedor {
+        grid-template-columns: 1fr;  /* Columna única para una mejor visibilidad en móviles */
+    }
+    .card {
+        padding: 5px;  /* Reducir el padding de las tarjetas */
+    }
+}
+
+@media screen and (max-width: 768px) {
+    html {
         font-size: 12px;
     }
-    .section1{
+    .section1 {
         margin: 150px auto 50px;
+        width: 90%;  /* Ajuste para mejor visibilidad en tablet */
+    }
+    .contenedor {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));  /* Ajuste para una mejor disposición de la grid en tablets */
+    }
+}
+@media screen and (min-width: 1024px) {
+    html {
+        font-size: 16px;  /* Aumentar el tamaño de la fuente para pantallas grandes */
+    }
+    .section1 {
+        margin: 50px auto;  /* Reducir el margen para un aspecto más centrado */
+        width: 60%;  /* Ajustar el ancho para no ocupar toda la pantalla */
+    }
+    .contenedor {
+        grid-template-columns: repeat(3, 1fr);  /* Tres columnas para aprovechar el espacio */
     }
 }
