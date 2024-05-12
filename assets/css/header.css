@@ -169,28 +169,40 @@ header nav ul li a {
 }
 
 @media (max-width: 480px) {
+  .headerPages nav ul li a {
+      font-size: 16px;  /* Aumentar el tamaño de la fuente para mejorar la legibilidad */
+      padding: 10px 5px;  /* Ajustar el padding para dar más espacio */
+  }
+
   .headerPages {
-      padding-top: 10px; /* Añadir padding superior para bajar el contenido del header */
-      padding-bottom: 10px; /* Añadir padding inferior para más espacio */
-      background-color: #333; /* Puedes ajustar el color de fondo si es necesario */
-      position: relative; /* Importante para posicionamiento de otros elementos basados en él */
-      z-index: 10; /* Asegúrate de que el header se sitúe encima de otros contenidos */
+      padding: 10px 0;  /* Reducir el padding superior e inferior del header para ahorrar espacio */
   }
 
-  .headerPages:after {
-      content: "";
-      display: block;
-      height: 4px;
-      background-color: #e67e22; /* El color naranja de la línea */
-      width: 100%;
-      position: absolute; /* Posicionar absolutamente respecto al header */
-      bottom: -4px; /* Posiciona la línea justo debajo del header */
-      left: 0;
+  .menu-item {
+      display: block;  /* Cambiar la disposición de los ítems del menú a bloque para que ocupen más espacio vertical */
+      width: 100%;  /* Asegurar que cada ítem del menú utilice todo el ancho disponible */
+      text-align: center;  /* Centrar el texto de cada ítem del menú */
   }
+  .headerPages .menu-toggle {
+    display: block;  /* Asegurarse de que el botón del menú hamburguesa sea visible */
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
 
-  /* Asegúrate de que el contenido principal comience después del header */
-  main {
-      margin-top: 60px; /* Ajusta según la altura total del header con la línea */
-  }
+.headerPages nav {
+    display: none;  /* Ocultar el menú por defecto */
+    width: 100%;  /* Establecer el ancho al expandir */
+    position: absolute;
+    background-color: #333;  /* Fondo para el menú desplegable */
+    top: 50px;  /* Posición debajo del header */
+    left: 0;
+    z-index: 15;
+}
+
+.headerPages nav.active {
+    display: block;  /* Mostrar el menú cuando está activo */
+}
+
 }
 
