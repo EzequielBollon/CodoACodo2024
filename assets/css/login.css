@@ -92,7 +92,7 @@ fieldset {
     text-align: left;
 }
 
-fieldset .form-control input {
+fieldset .form-control .inputNC{
     width: 55%;
     box-sizing: border-box;
     border-radius: 0.3em;
@@ -108,16 +108,16 @@ fieldset .form-control input {
 }
 
 
-.form .form-control input:invalid:focus {
+.form .form-control .inputNC:invalid:focus {
     border-bottom: 2px solid #ff000d;
 }
 
-.form .form-control input:valid:focus {
+.form .form-control .inputNC:valid:focus {
     border-bottom: 2px solid rgb(218, 86, 46);
     transition: 0.3s;
 }
 
-.form .form-control input:focus {
+.form .form-control .inputNC:focus {
     border-bottom: 2px solid #8e999a;
     background-color: rgb(104, 106, 106);
 }
@@ -209,15 +209,4 @@ fieldset .form-control input {
         grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));  /* Ajuste para una mejor disposición de la grid en tablets */
     }
 }
-@media screen and (min-width: 1024px) {
-    html {
-        font-size: 16px;  /* Aumentar el tamaño de la fuente para pantallas grandes */
-    }
-    .section1 {
-        margin: 50px auto;  /* Reducir el margen para un aspecto más centrado */
-        width: 60%;  /* Ajustar el ancho para no ocupar toda la pantalla */
-    }
-    .contenedor {
-        grid-template-columns: repeat(3, 1fr);  /* Tres columnas para aprovechar el espacio */
-    }
-}
+
