@@ -8,13 +8,13 @@ window.onload = function() {
 		
 	let apellido = document.getElementById('apellido');
 	apellido.addEventListener("input", campoApellido);
-	
-	let correo = document.getElementById('correo');
-	correo.addEventListener("input", campoCorreo);
-	
-	let asunto = document.getElementById('asunto');
-	asunto.addEventListener("input", campoAsunto);
-	
+
+	let telefono = document.getElementById('telefono');
+	telefono.addEventListener("input", campoTelefono);
+
+	let email = document.getElementById('email');
+	email.addEventListener("input", campoEMail);
+
 	let mensaje = document.getElementById('mensaje');
 	mensaje.addEventListener("input", campoMensaje);
 	
@@ -36,23 +36,23 @@ function campoApellido() {
 		document.getElementById('apellido_error').innerHTML = " ";
 		document.getElementById('apellido').style.outline = "0.5px solid #000";
 	}
-}
+}	
 
-function campoCorreo() {
-	let cCorreo = document.getElementById('correo').value;
+function campoTelefono() {
+	let cTelefono = document.getElementById('telefono').value;
 	
-	if (cCorreo) {
-		document.getElementById('correo_error').innerHTML = " ";
-		document.getElementById('correo').style.outline = "0.5px solid #000";
+	if (cTelefono) {
+		document.getElementById('telefono_error').innerHTML = " ";
+		document.getElementById('telefono').style.outline = "0.5px solid #000";
 	}
 }
 
-function campoAsunto() {
-	let cAsunto = document.getElementById('asunto').value;
+function campoEMail() {
+	let cEMail = document.getElementById('email').value;
 	
-	if (cAsunto) {
-		document.getElementById('asunto_error').innerHTML = " ";
-		document.getElementById('asunto').style.outline = "0.5px solid #000";
+	if (cEMail) {
+		document.getElementById('email_error').innerHTML = " ";
+		document.getElementById('email').style.outline = "0.5px solid #000";
 	}
 }
 
@@ -71,21 +71,22 @@ function borrando() {
 
 function contactos() {
 	let expNomape = /^([a-zA-Z]+)(\s[a-zA-Z]+)*$/;
-	let expCorreo = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+	let expTelefono = /^(?:(?:00)?549?)?0?(?:11|[2368]\d)(?:(?=\d{0,2}15)\d{2})??\d{8}$/
+	let expEMail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 	let cNombre = document.getElementById('nombre').value;
 	let cApellido = document.getElementById('apellido').value;
-	let cCorreo = document.getElementById('correo').value;
-	let cAsunto = document.getElementById('asunto').value;
+	let cTelefono = document.getElementById('telefono').value;	
+	let cEMail = document.getElementById('email').value;
 	let cMensaje = document.getElementById('mensaje').value;
 	let nombreError = document.getElementById('nombre_error');
 	let apellidoError = document.getElementById('apellido_error');
-	let correoError = document.getElementById('correo_error');
-	let asuntoError = document.getElementById('asunto_error');
+	let telefonoError = document.getElementById('telefono_error');
+	let emailError = document.getElementById('email_error');
 	let mensajeError = document.getElementById('mensaje_error');
 	let campoNombre = document.getElementById('nombre');
 	let campoApellido = document.getElementById('apellido');	
-	let campoCorreo = document.getElementById('correo');
-	let campoAsunto = document.getElementById('asunto');
+	let campoEMail = document.getElementById('email');
+	let campoTelefono = document.getElementById('telefono');
 	let campoMensaje = document.getElementById('mensaje');
 	
 	if (!cNombre) {
@@ -110,31 +111,79 @@ function contactos() {
 		apellidoError.innerHTML = mensajeInvalidoApellido;
 		campoApellido.style.outline = "1px solid #f00";
 		return false;
-	}	
+	}
 	
-	if (!cCorreo) {
-		let mensajeErrorCorreo = "Por favor, ingresa tu Mail";
-		correoError.innerHTML = mensajeErrorCorreo;
-		campoCorreo.style.outline = "1px solid #f00";
+	if (!cTelefono) {
+		let mensajeErrorTelefono = "Por favor, ingresa tu Telefono";
+		telefonoError.innerHTML = mensajeErrorTelefono;
+		campoTelefono.style.outline = "1px solid #f00";
 		return false;
-	} else if (!expCorreo.test(cCorreo)) {
-		let mensajeInvalidoCorreo = "El Mail ingreso no es válido";
-		correoError.innerHTML = mensajeInvalidoCorreo;
-		campoCorreo.style.outline = "1px solid #f00";
+	} else if (!expTelefono.test(cTelefono)) {
+		let mensajeInvalidoTelefono = "El Telefono ingresado no es válido";
+		telefonoError.innerHTML = mensajeInvalidoTelefono;
+		campoTelefono.style.outline = "1px solid #f00";
 		return false;
 	}
 	
-	if (!cAsunto) {
-		let mensajeErrorAsunto = "Por favor, ingresa el motivo de tu consulta";
-		asuntoError.innerHTML = mensajeErrorAsunto;
-		campoAsunto.style.outline = "1px solid #f00";
+	if (!cEMail) {
+		let mensajeErrorEMail = "Por favor, ingresa tu Mail";
+		emailError.innerHTML = mensajeErrorEMail;
+		campoEMail.style.outline = "1px solid #f00";
 		return false;
-	} else if (!isNaN(cAsunto)) {
-		let mensajeNumerosAsunto = "No se permiten Numeros en el Asunto";
-		asuntoError.innerHTML = mensajeNumerosAsunto;
-		campoAsunto.style.outline = "1px solid #f00";
+	} else if (!expEMail.test(cEMail)) {
+		let mensajeInvalidoEMail = "El Mail ingresado no es válido";
+		emailError.innerHTML = mensajeInvalidoEMail;
+		campoEMail.style.outline = "1px solid #f00";
 		return false;
 	}
+
+	let checkboxes = document.getElementsByName('contacto');
+	let checkselect = false;
+  
+	for (let i=0, n=checkboxes.length; i<n; i++) {
+	  if (checkboxes[i].checked) {
+		checkselect = true;
+		break;
+	  }
+	}
+
+	if (!checkselect) {
+		document.getElementById('check_error').innerHTML = "Por favor, selecciona medios de contacto";
+        setTimeout(function(){
+                document.getElementById('check_error').style.display = "none";
+              }, 3000);
+		return false;	 
+	} 
+
+	let select = document.getElementById('horario');
+	let opcion = select.value;
+  
+	if (opcion == 'elegir') {
+		document.getElementById('select_error').innerHTML = "Por favor, selecciona una opción";
+        setTimeout(function(){
+			document.getElementById('select_error').style.display = "none";
+		  }, 3000);
+	    return false;	  
+	}
+
+	let radios = document.getElementsByName('motivo');
+	let radioselect = false;
+  
+	for (let i=0, n=radios.length; i<n; i++) {
+	  if (radios[i].checked) {
+		radioselect = true;
+		document.getElementById('radio_error').innerHTML = " ";
+		break;
+	  }
+	}
+
+	if (!radioselect) {
+		document.getElementById('radio_error').innerHTML = "Selecciona el motivo del contacto";
+        setTimeout(function(){
+			document.getElementById('radio_error').style.display = "none";
+		  }, 3000);
+		  return false;	 	  
+	} 
 	
 	if (!cMensaje) {
 		let mensajeErrorMensaje = "Por favor, ingresa el detalle de tu consulta";
@@ -146,6 +195,5 @@ function contactos() {
 		mensajeError.innerHTML = mensajeLargo;
 		campoMensaje.style.outline = "1px solid #f00";
 		return false;
-	} 
-}
-
+	}
+  }
