@@ -28,7 +28,7 @@ if (document.querySelector(".headerIndex")) {
         <nav>
             <ul>
                 <li><a href="index.html">Inicio</a></li>
-                <li><a href="pages/producto.html">productos</a></li>
+                <li><a href="pages/producto.html">Productos</a></li>
                 <li><a href="pages/login.html">Inicia sesión</a></li>
                 <li><a href="pages/contacto.html">Contacto</a></li>
             </ul>
@@ -61,7 +61,7 @@ if (document.querySelector(".headerIndex")) {
         <nav>
             <ul>
                 <li><a href="../index.html">Inicio</a></li>
-                <li><a href="producto.html">productos</a></li>
+                <li><a href="producto.html">Productos</a></li>
                 <li><a href="login.html">Inicia sesión</a></li>
                 <li><a href="contacto.html">Contacto</a></li>
             </ul>
