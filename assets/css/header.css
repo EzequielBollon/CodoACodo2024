@@ -1,4 +1,24 @@
-header {
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #333;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+.header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -8,27 +28,53 @@ header {
     position: fixed;
     top: 0;
     width: 100%;
-    background: rgba(59, 39, 39, 0.12);
+    background: var(--color_primario); /* Usando variable para color primario */
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(4.9px);
     -webkit-backdrop-filter: blur(4.9px);
     z-index: 1;
+    height: var(--altura_header); /* Altura controlada por variable */
 }
 
-
-/* Estilos para el contenido dentro del header */
-header * {
+.navbar {
+    height: 100%;
     display: flex;
+    width: min(var(--ancho_maximo), 100%);
+    margin: 0 auto;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 0 var(--padding_left_right);
 }
 
-/* Estilos para el logo */
+.menu_hamburguesa {
+    display: none;
+}
+
+.menu_hamburguesa:checked + .ul_links {
+ display: flex; /* Asegúrate de que esté en flex para que se centre todo */
+    position: fixed; /* Cambiado de absolute a fixed para cubrir toda la pantalla */
+    top: 0; /* Inicio en la parte superior de la pantalla */
+    left: 0; /* Inicio en el borde izquierdo */
+    width: 100%; /* Ancho completo */
+    height: 100vh; /* Altura completa del viewport */
+    background-color: var(--color_primario_suave); /* Color de fondo semi-transparente */
+    z-index: 2; /* Asegúrate de que esté sobre otros contenidos */
+    flex-direction: column; /* Elementos en columna */
+    justify-content: center; /* Centrado vertical */
+    align-items: center; /* Centrado horizontal */
+    gap: 3rem; /* Espacio entre links */
+}
+
+
 .logo {
+    display: flex;
     align-items: center;
-    font-size: 2rem;
+    color: var(--color_blanco);
 }
 
 .logo img {
-    width: 4rem;
+    width: 4rem; /* Tamaño controlado para ser responsive */
     height: 4rem;
 }
 
@@ -38,171 +84,53 @@ header * {
     font-style: italic;
 }
 
-/* Estilos para el formulario de búsqueda */
-header form {
-    align-items: center;
-}
-
-.barra-busqueda input {
-    width: 15rem;
-    height: 1.4rem;
-    padding: 5px;
-    border: none;
-    border-radius: 7px;
-    margin: 0 5px;
-    color: black;
-    outline: none;
-    font-size: 0.8rem;
-}
-
-/* Estilos para los enlaces de navegación */
-header nav ul li a {
-    text-decoration: none;
-    color: white;
-    margin: 0 10px;
-    font-size: 1rem;
-}
-
-/*MENU HAMBURGESA*/
-
-.menuHamburguesa {
-    color: white;
-    position: relative;
-    background: #123456;
-    min-height: 48px;
-  }
-
-.menuHamburguesa a {
-    color: inherit;
-    text-decoration: none;
-    display:block;
-    padding: 10px 20px;
-    border-bottom: 2px solid #456789;
-    max-width: 200px;
-    background: #234567;
-    font-variant: small-caps;
-    text-shadow: 1px 1px black;
-  }
-
-  .menuHamburguesa input[type="checkbox"], .menuHamburguesa .fa-bars, .menuHamburguesa .fa-times {
-    display: none;
-    position: absolute;
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    right: 0;
-    top: 0;
-    width: 48px;
-    height: 48px;
-    
-  }
-  
-  .menuHamburguesa .fa-bars, .menuHamburguesa .fa-times {
-    display: none; /* Asegura que ambos íconos estén inicialmente escondidos */
-    font-size: 24px; /* Ajusta el tamaño del ícono */
-    color: white;
-    position: absolute;
-    right: 10px;
-    top: 10px;
+.labe_hamburguesa {
+    color: var(--color_blanco);
     cursor: pointer;
-  }
-  
-  
-  .menuHamburguesa input[type="checkbox"] {
-    opacity: 0;
-  }
-  
-  .menuHamburguesa nav {
-    display: none;
-  }
-  
-  .menuHamburguesa input:checked ~ nav {
-    display: block;
-    
-  }
-  
-  .menuHamburguesa input[type="checkbox"]:not(:checked) ~ .fa-bars {
-    display: block;
-  }
-  
-  .menuHamburguesa input[type="checkbox"]:checked ~ .fa-times {
-    display: block;
-  }
-  
-  .menuHamburguesa input[type="checkbox"]:not(:checked) ~ .fa-times {
-    display: none;
-    transition: 1s;
-  }
-  
-  /* acccesibilidad y estilos de enlace */
-.menuHamburguesa a:focus {
-  background-color: #345678; /* Un color de fondo para cuando el enlace está en foco */
-  outline: none; /* Opcional, pero mantén una indicación visual de foco si eliminas el outline */
 }
 
-/* Media query para hacer el header responsive */
-@media screen and (max-width: 768px) {
-    header {
-        flex-direction:column;
-        padding: 10px 20px; /* Ajustar el espacio interior */
-    }
-    header nav,header form{ /*29/04 PARA QUE SE OCULTEN EL NAV Y LA BARRA DE BUSQUEDA*/
+.ul_links {
+    display: none;
+    width: 100%;
+    padding: 20px 0; /* Agrega un poco de padding para no pegar los links al borde */
+    box-sizing: border-box;
+    align-items: center; /* Centra los links verticalmente */
+    text-align: center; /* Centra el texto de los links */
+}
+
+.li_links {
+    padding: 10px 0; /* Espaciado vertical entre los links */
+}
+
+.link {
+    color: var(--color_blanco);
+    font-size: 3em; /* Tamaño grande para móviles, ajustable más adelante */
+    font-weight: bold;
+    font-size: 1.5rem; /* Ajusta el tamaño de la fuente para móviles */
+    color: var(--color_blanco); /* Asegura que el color del texto sea blanco */
+    display: block; /* Hace que los links ocupen toda la línea */
+}
+
+@media (min-width: 768px) {
+    .labe_hamburguesa {
         display: none;
     }
 
-    .logo img {
-        width: 5rem; /* Reducir el tamaño del logo en pantallas pequeñas */
-        height: 5rem;
+    .ul_links {
+        position: static;
+        width: auto;
+        height: auto;
+        display: flex;
+        flex-direction: row;
+        gap: 2rem;
     }
 
-    
-    header form input {
-        width: 10rem; /* Reducir el ancho del campo de búsqueda en pantallas pequeñas */
+    .link {
+        font-size: 1.2rem;
+        padding: 0.2rem 0.7rem;
     }
 
-    .menuHamburguesa{
-        position: relative;
-    }
-    .menuHamburguesa input[type="checkbox"], .menuHamburguesa .fa-bars, .menuHamburguesa .fa-times{
-        display: block;
+    .link:hover {
+        background-color: #5f1192;
     }
 }
-
-@media (max-width: 480px) {
-  .headerPages nav ul li a {
-      font-size: 16px;  /* Aumentar el tamaño de la fuente para mejorar la legibilidad */
-      padding: 10px 5px;  /* Ajustar el padding para dar más espacio */
-  }
-
-  .headerPages {
-      padding: 10px 0;  /* Reducir el padding superior e inferior del header para ahorrar espacio */
-  }
-
-  .menu-item {
-      display: block;  /* Cambiar la disposición de los ítems del menú a bloque para que ocupen más espacio vertical */
-      width: 100%;  /* Asegurar que cada ítem del menú utilice todo el ancho disponible */
-      text-align: center;  /* Centrar el texto de cada ítem del menú */
-  }
-  .headerPages .menu-toggle {
-    display: block;  /* Asegurarse de que el botón del menú hamburguesa sea visible */
-    position: absolute;
-    top: 10px;
-    right: 10px;
-}
-
-.headerPages nav {
-    display: none;  /* Ocultar el menú por defecto */
-    width: 100%;  /* Establecer el ancho al expandir */
-    position: absolute;
-    background-color: #333;  /* Fondo para el menú desplegable */
-    top: 50px;  /* Posición debajo del header */
-    left: 0;
-    z-index: 15;
-}
-
-.headerPages nav.active {
-    display: block;  /* Mostrar el menú cuando está activo */
-}
-
-}
-
